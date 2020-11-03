@@ -31,6 +31,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="{Binding StatusText}"
+                                      Command="{Binding ToggleCompleted}" />
+                        </ViewCell.ContextActions>
                         <Grid Padding="15,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />

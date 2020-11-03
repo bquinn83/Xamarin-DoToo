@@ -16,5 +16,11 @@ namespace DoToo.ViewModels
         public event EventHandler ItemStatusChanged;
         public TodoItem Item { get; private set; }
         public string StatusText => Item.Completed ? "Reactivate" : "Completed";
+
+        public ICommand ToggleCompleted => new Command((arg) =>
+        {
+            Item.Completed = !Item.Completed;
+            ItemStatusChanged?.Invoke(this, new EventArgs());
+        });
     }
 }
