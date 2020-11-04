@@ -9,8 +9,8 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout Padding="14">
-        <Label Text="{Binding Item.Title}" />
-        <Entry />
+        <Label Text="Title:" />
+        <Entry Text="{Binding Item.Title}"/>
         <Label Text="Due"/>
         <DatePicker Date="{Binding Item.Due}"/>
         <StackLayout Orientation="Horizontal">
