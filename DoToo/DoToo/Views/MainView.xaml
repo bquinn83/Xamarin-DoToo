@@ -21,7 +21,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Button Text="Toggle Filter" />
+        <Button Text="{Binding FilterText, StringFormat='Filter: {0}'}" 
+                Command="{Binding ToggleFilter}"/>
 
         <ListView x:Name="ItemsListView"
                   Grid.Row="1"
