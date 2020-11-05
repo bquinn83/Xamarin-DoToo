@@ -6,12 +6,18 @@ using System.Windows.Input;
 using Xamarin.Forms;
 
 using DoToo.Models;
+using DoToo.Repositories;
 
 namespace DoToo.ViewModels
 {
     public class TodoItemViewModel : ViewModel
     {
-        public TodoItemViewModel(TodoItem item) => Item = item;
+        private readonly TodoItemRepository repository;
+        public TodoItemViewModel(TodoItem item, TodoItemRepository repository)
+        {
+            this.repository = repository;
+            Item = item;
+        }
 
         public event EventHandler ItemStatusChanged;
         public TodoItem Item { get; private set; }
@@ -20,6 +26,11 @@ namespace DoToo.ViewModels
         public ICommand ToggleCompleted => new Command((arg) =>
         {
             Item.Completed = !Item.Completed;
+            ItemStatusChanged?.Invoke(this, new EventArgs());
+        });
+        public ICommand DeleteItem => new Command(async () =>
+        {
+            await repository.DeleteItem(Item);
             ItemStatusChanged?.Invoke(this, new EventArgs());
         });
     }

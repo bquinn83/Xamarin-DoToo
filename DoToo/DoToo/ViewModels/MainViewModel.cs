@@ -68,7 +68,7 @@ namespace DoToo.ViewModels
         }
         private TodoItemViewModel CreateTodoItemViewModel(TodoItem item)
         {
-            var itemViewModel = new TodoItemViewModel(item);
+            var itemViewModel = new TodoItemViewModel(item, repository);
             itemViewModel.ItemStatusChanged += ItemStatusChanged;
             return itemViewModel;
         }
