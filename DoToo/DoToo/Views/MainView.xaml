@@ -21,8 +21,19 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Button Text="{Binding FilterText, StringFormat='Filter: {0}'}" 
-                Command="{Binding ToggleFilter}"/>
+        <Button Style="{StaticResource FilterButton}"
+                Text="{Binding FilterText, StringFormat='Filter: {0}'}"
+                BackgroundColor="{Binding ShowAll, Converter={StaticResource statusColorConverter}}"
+                TextColor="Black"
+                Command="{Binding ToggleFilter}">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding ShowAll}"
+                             Value="True">
+                    <Setter Property="TextColor" Value="White" />
+                </DataTrigger>
+            </Button.Triggers>
+
+        </Button>
 
         <ListView x:Name="ItemsListView"
                   Grid.Row="1"
@@ -50,14 +61,15 @@
                                    FontSize="Large" />
                             <Label Grid.Column="1"
                                    Grid.Row="1"
-                                   Text="{Binding Item.Due}"
+                                   Text="{Binding Item.Due, StringFormat='{0:MMMM d, yyyy}'}"
                                    FontSize="Micro" />
                             <Label Grid.Column="1"
                                    Grid.Row="1"
                                    HorizontalTextAlignment="End"
                                    Text="Completed"
                                    IsVisible="{Binding Item.Completed}"
-                                   FontSize="Micro" />
+                                   FontSize="Micro" 
+                                   TextColor="{StaticResource CompletedColor}"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
