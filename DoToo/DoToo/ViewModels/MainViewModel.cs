@@ -58,11 +58,16 @@ namespace DoToo.ViewModels
         }
         private async Task LoadData()
         {
+            //get items
             var items = await repository.GetItems();
+            //filter items
             if (!ShowAll)
             {
                 items = items.Where(i => i.Completed == false).ToList();
             }
+            //order items before creating ViewModels
+            items = items.OrderBy(i => i.Due).ToList();
+            //create viewModels
             var itemViewModels = items.Select(i => CreateTodoItemViewModel(i));
             Items = new ObservableCollection<TodoItemViewModel>(itemViewModels);
         }
