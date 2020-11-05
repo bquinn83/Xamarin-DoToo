@@ -13,10 +13,10 @@
                 <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="BorderRadius" Value="6" />
                 <Setter Property="BorderColor" Value="Silver"/>
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
             <Color x:Key="CompletedColor">#1C8859</Color>
-            <Color x:Key="ActiveColor">DarkRed</Color>
+            <Color x:Key="ActiveColor">Red</Color>
             <Color x:Key="NormalColor">LightGray</Color>
             <Color x:Key="WarningColor">DarkOrange</Color>
             <Color x:Key="DangerColor">Red</Color>

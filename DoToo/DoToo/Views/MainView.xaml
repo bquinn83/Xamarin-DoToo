@@ -21,11 +21,10 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        <BoxView BackgroundColor="Black" Grid.RowSpan="2" />
         <Button Style="{StaticResource FilterButton}"
                 Text="{Binding FilterText, StringFormat='Filter: {0}'}"
                 BackgroundColor="{Binding ShowAll, Converter={StaticResource statusColorConverter}}"
-                TextColor="Black"
                 Command="{Binding ToggleFilter}">
             <Button.Triggers>
                 <DataTrigger TargetType="Button" Binding="{Binding ShowAll}"
@@ -33,18 +32,21 @@
                     <Setter Property="TextColor" Value="White" />
                 </DataTrigger>
             </Button.Triggers>
-
         </Button>
 
         <ListView x:Name="ItemsListView"
                   Grid.Row="1"
                   RowHeight="70"
+                  BackgroundColor="Black"
+                  SeparatorColor="Gray"
                   ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      Command="{Binding DeleteItem}" />
                             <MenuItem Text="{Binding StatusText}"
                                       Command="{Binding ToggleCompleted}" />
                         </ViewCell.ContextActions>
@@ -59,11 +61,11 @@
 
                             <Label Grid.Column="1"
                                    Text="{Binding Item.Title}"
-                                   FontSize="Large" />
+                                   FontSize="Large" 
+                                   TextColor="Gray"/>
                             <Label Grid.Column="1"
                                    Grid.Row="1"
                                    Text="{Binding Item.Due, StringFormat='{0:MMMM d, yyyy}'}"
-                                   FontSize="Micro" />
                                    FontSize="Micro" 
                                    TextColor="{Binding Item.Due, Converter={StaticResource dueDateConverter}}"/>
                             <Label Grid.Column="1"
