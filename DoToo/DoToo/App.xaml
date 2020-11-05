@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="#A25EBB" />
+                <Setter Property="BarBackgroundColor" Value="DarkGray" />
                 <Setter Property="BarTextColor" Value="#FFFFFF" />
             </Style>
             <Style x:Key="FilterButton" TargetType="Button">
@@ -16,7 +16,10 @@
                 <Setter Property="TextColor" Value="Black" />
             </Style>
             <Color x:Key="CompletedColor">#1C8859</Color>
-            <Color x:Key="ActiveColor">#D3D3D3</Color>
+            <Color x:Key="ActiveColor">DarkRed</Color>
+            <Color x:Key="NormalColor">LightGray</Color>
+            <Color x:Key="WarningColor">DarkOrange</Color>
+            <Color x:Key="DangerColor">Red</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
